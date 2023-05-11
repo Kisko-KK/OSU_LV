@@ -25,9 +25,6 @@ X_test_n = X_test.astype('float32')/ 255.0                                  #X_t
                                                                             #X_test_n = sc.transform((X_test))
 
 
-
-
-
 # 1-od-K kodiranje
 y_train = to_categorical(y_train, dtype ="uint8")
 y_test = to_categorical(y_test, dtype ="uint8")

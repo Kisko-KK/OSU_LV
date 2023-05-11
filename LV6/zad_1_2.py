@@ -43,7 +43,7 @@ def plot_decision_regions(X, y, classifier, resolution=0.02):
 
 
 # ucitaj podatke
-data = pd.read_csv("Social_Network_Ads.csv")
+data = pd.read_csv("LV6\Social_Network_Ads.csv")
 print(data.info())
 
 data.hist()
@@ -85,13 +85,13 @@ plt.show()
 
 
 #ZADATAK 1.
-KNN_model = KNeighborsClassifier( n_neighbors = 5 )
+KNN_model = KNeighborsClassifier( n_neighbors = 5 )                                         #Izgradi KNN model
 KNN_model.fit(X_train_n , y_train)
 
 y_test_p_KNN = KNN_model.predict( X_test_n )
 y_train_p_KNN = KNN_model.predict( X_train_n )
 
-print("KNN: ")
+print("KNN model1: ")
 print("Tocnost train: " + "{:0.3f}".format((accuracy_score(y_train, y_train_p_KNN))))
 print("Tocnost test: " + "{:0.3f}".format((accuracy_score(y_test, y_test_p_KNN))))
 
@@ -109,9 +109,19 @@ plt.show()
 #ZADATAK2
 KNN_model2 = KNeighborsClassifier(n_neighbors=7)
 KNN_model2.fit(X_train_n , y_train)
+
+y_test_p_KNN = KNN_model2.predict( X_test_n )
+y_train_p_KNN = KNN_model2.predict( X_train_n )
+
+print("KNN model2: ")
+print("Tocnost train: " + "{:0.3f}".format((accuracy_score(y_train, y_train_p_KNN))))
+print("Tocnost test: " + "{:0.3f}".format((accuracy_score(y_test, y_test_p_KNN))))
+
+
 param_grid = {'n_neighbors': np.arange(1,100)}
-knn_gscv = GridSearchCV(KNN_model2, param_grid, cv = 5)
+knn_gscv = GridSearchCV(KNN_model2, param_grid, cv = 5)                                    #Pomocu unakrsne validacije odredite optimalnu vrijednost K
 knn_gscv.fit( X_train_n , y_train )
+
 
 print ( knn_gscv.best_score_ , knn_gscv.best_params_)
 
@@ -119,6 +129,7 @@ plot_decision_regions(X_train_n, y_train, classifier=KNN_model2)
 plt.xlabel('x_1')
 plt.ylabel('x_2')
 plt.legend(loc='upper left')
+plt.title("Tocnost: " + "{:0.3f}".format((accuracy_score(y_train, y_train_p_KNN))))
 plt.tight_layout()
 plt.show()
 

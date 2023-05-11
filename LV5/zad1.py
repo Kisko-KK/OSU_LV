@@ -23,7 +23,7 @@ plt.legend(['Podaci za učenje', 'Test podaci'])
 plt.title('Podaci za učenje i testiranje')
 plt.xlabel('x1')
 plt.ylabel('x2')
-
+plt.show()
 
 # b)
 LogRegression_model = LogisticRegression()

@@ -4,7 +4,7 @@ import matplotlib.image as Image
 from sklearn.cluster import KMeans
 
 # ucitaj sliku
-img = Image.imread("imgs//test_1.jpg")
+img = Image.imread("LV7/imgs/imgs/test_1.jpg")
 
 # prikazi originalnu sliku
 plt.figure()
@@ -48,7 +48,7 @@ plt.figure()
 for i in range(1, 9):
     km = KMeans(n_clusters=i, init="random", n_init=5, random_state=0)
     km.fit(img_array_aprox)
-    plt.plot(i, km.inertia_, ".-r", linewidth=2)
+    plt.plot(i, km.inertia_, ".-r", linewidth=2)                                            #J parametar
     plt.xlabel("K")
     plt.ylabel("J")
 

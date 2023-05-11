@@ -63,3 +63,4 @@ plt.ylabel('$x_2$')
 plt.title('alogritam K srednjih vrijednosti')
 plt.show()
 
+

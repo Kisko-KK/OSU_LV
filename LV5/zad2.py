@@ -39,7 +39,7 @@ def plot_decision_regions(X, y, classifier, resolution=0.02):
                     label=labels[cl])
 
 # ucitaj podatke
-df = pd.read_csv("penguins.csv")
+df = pd.read_csv("LV5\penguins.csv")
 
 # izostale vrijednosti po stupcima
 print(df.isnull().sum())

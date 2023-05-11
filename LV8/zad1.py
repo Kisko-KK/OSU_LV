@@ -13,6 +13,7 @@ input_shape = (28, 28, 1)
 # train i test podaci
 (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
 
+print(y_test)
 # prikaz karakteristika train i test podataka
 print('Train: X=%s, y=%s' % (x_train.shape, y_train.shape))
 print('Test: X=%s, y=%s' % (x_test.shape, y_test.shape))
@@ -65,11 +66,11 @@ model.compile ( loss ="categorical_crossentropy",
 # TODO: provedi ucenje mreze
 
 batch_size = 32
-epochs = 20
+epochs = 2
 history = model.fit ( x_train_s, y_train_s , batch_size = batch_size, epochs = epochs , validation_split = 0.1)
 
 predictions = model.predict(x_test_s)
-
+print(predictions)
 
 # TODO: Prikazi test accuracy i matricu zabune
 
@@ -78,13 +79,25 @@ print("Test loss:", score[0])
 print("Test accuracy:", score[1])
 
 y_pred = np.argmax(predictions, axis=-1)
-print(y_pred)
+
 y_true = np.argmax(y_test_s, axis=-1)
 
-cm = confusion_matrix(y_true, y_pred)
+cm = confusion_matrix(y_true, y_pred)                                                #ZA KATEGORICKE IZLAZE
 disp = ConfusionMatrixDisplay(cm)
 disp.plot()
 plt.show()
+
+"""
+y_predictions = model.predict(X_test)
+print(y_predictions)
+y_predictions = np.around(y_predictions).astype(np.int32)                             #PREDIKCIJA I MATRICA ZABUNE
+print(y_predictions)
+cm = confusion_matrix(y_test, y_predictions)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm)                                    #ZA 0 i 1 rezultate
+disp.plot()
+plt.show()
+"""
+
 
 
 # TODO: spremi model

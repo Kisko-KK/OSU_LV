@@ -1,6 +1,6 @@
 import pandas as pd
 
-data = pd . read_csv('data_C02_emission.csv')
+data = pd . read_csv('LV3\data_C02_emission.csv')
 
 
 # a)
@@ -9,10 +9,11 @@ print(data.info())
 print(data.isnull().sum())
 print(data.duplicated)
 
-data.dropna()
-data.drop_duplicates()
 
-data = data.reset_index(drop=True)
+data.drop_duplicates()
+data = data.dropna(axis = 0)
+data = data.reset_index(drop = True)
+
 
 data.Make = data.Make.astype('category')
 data.Model = data.Model.astype('category')

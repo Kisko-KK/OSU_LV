@@ -2,7 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-data = np.loadtxt("data.csv",delimiter=",", dtype=float, skiprows=1)
+data = np.loadtxt("LV2\data.csv",delimiter=",", dtype=float, skiprows=1)
+
+#data = data[~np.isnan(data[:,2])]
+#print(np.isnan(data[:,2]))
 
 #a)
 print(data.shape[0])
